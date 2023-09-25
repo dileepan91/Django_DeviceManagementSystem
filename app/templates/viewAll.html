@@ -1,0 +1,93 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,
+                 initial-scale=1, shrink-to-fit=no"
+          name="viewport">
+
+    <link href=
+                  "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+          rel="stylesheet">
+    <style>
+        .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 8%;
+       }
+    </style>
+</head>
+<body>
+<br/>
+<div>
+    <img alt="Merit" class="center" src="{% static 'img.png' %}">
+</div>
+<br/>
+<br/>
+<div class="container">
+
+    <h3 style="text-align: center;">
+        Student's Device Management Log(s)
+    </h3>
+    <br/>
+
+    {% if all_audit_info %}
+
+    <table class="table table-striped sampleTable" id="mytableID"
+           style="width:100%">
+        <thead>
+        <tr>
+            <th>Student Id</th>
+            <th>Camera Id</th>
+            <th>Lens Id</th>
+            <th>SD Card Id</th>
+            <th>Time Out</th>
+            <th>Time In</th>
+            <th>Condition</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for id in all_audit_info %}
+        <tr>
+            <td>{{id.student_id}}</td>
+            <td>{{id.camera_id}}</td>
+            <td>{{id.lens_id}}</td>
+            <td>{{id.SD_card}}</td>
+            <td>{{id.datetime_out}}</td>
+            <td>{{id.datetime_in}}</td>
+            <td>{{id.condition}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+    {% else %}
+    <p>No device audit details available.</p>
+    {% endif %}
+</div>
+<script src=
+                "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+</script>
+<script src=
+                "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.fancytable/dist/fancyTable.min.js"></script>
+
+</body>
+<script type="text/javascript">
+
+            $(document).ready(function() {
+                $(".sampleTable").fancyTable({
+                  /* Column number for initial sorting*/
+                   sortColumn:0,
+                   /* Setting pagination or enabling */
+                   pagination: true,
+                   /* Rows per page kept for display */
+                   perPage:25,
+                   globalSearch:true
+                   });
+
+            });
+</script>
+</html>
