@@ -14,6 +14,6 @@ If you are editing models.py, then run the below command before starting the ser
 1) python manage.py makemigrations app
 2) python manage.py migrate
 
-To run server: python manage.py runserver <port_number>
+To run server: python manage.py runserver
 
 Default port is 8000.
