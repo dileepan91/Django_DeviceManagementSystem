@@ -6,7 +6,7 @@ from .models import Audit
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    return HttpResponse("Hello, Have a nice day.")
 
 
 def view_all(request):
